@@ -78,15 +78,6 @@
                 radial-gradient(45% 55% at 80% 30%, rgba(59,130,246,0.20), transparent 70%),
                 radial-gradient(50% 60% at 50% 90%, rgba(139,92,246,0.15), transparent 70%),
                 #050505;
-            background-size: 200% 200%;
-            animation: tfbg 24s ease-in-out infinite alternate;
-        }
-        @keyframes tfbg {
-            0%   { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            body::before { animation: none; }
         }
     </style>
 
@@ -516,25 +507,13 @@
         function navigate(view, serviceId = null) {
             const home = document.getElementById('view-home');
             const detail = document.getElementById('view-detail');
-            const goTop = () => { if (window.__lenis) window.__lenis.scrollTo(0, { immediate: true }); else window.scrollTo(0, 0); };
 
             const switchTo = (show, hide) => {
-                if (window.gsap && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                    gsap.to(hide, { opacity: 0, duration: 0.25, ease: 'power2.in', onComplete: () => {
-                        hide.classList.remove('active');
-                        renderIfDetail(view, serviceId, show);
-                        show.classList.add('active');
-                        gsap.fromTo(show, { opacity: 0, filter: 'blur(12px)', y: 30 }, { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.5, ease: 'power3.out' });
-                        goTop();
-                    }});
-                } else {
-                    hide.classList.remove('active');
-                    renderIfDetail(view, serviceId, show);
-                    show.classList.add('active');
-                    goTop();
-                }
+                hide.classList.remove('active');
+                if (view === 'detail') renderDetail(serviceId);
+                show.classList.add('active');
+                window.scrollTo(0, 0);
             };
-            function renderIfDetail(v, id, show) { if (v === 'detail') renderDetail(id); }
 
             if (view === 'detail') switchTo(detail, home);
             else switchTo(home, detail);
@@ -655,8 +634,7 @@
 
         // Animação de Reveal no Scroll
         function startRevealObserver() {
-            // Se o GSAP está ativo, ele cuida de todos os .reveal (sem conflito)
-            if (window.gsap && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            // Reveal via IntersectionObserver + transition CSS (sem custo de scroll)
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
@@ -734,12 +712,7 @@
         initContactForm();
     </script>
 
-    <!-- Libs de animação (locais, offline-safe) -->
-    <script src="assets/vendor/lenis.min.js"></script>
-    <script src="assets/vendor/gsap.min.js"></script>
-    <script src="assets/vendor/ScrollTrigger.min.js"></script>
-
-    <!-- Motor de animação futurista 2030 -->
+    <!-- Motor de animação leve (cursor/tilt/contadores) -->
     <script src="assets/anim.js"></script>
 </body>
 </html>
