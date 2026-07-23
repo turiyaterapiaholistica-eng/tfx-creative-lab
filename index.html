@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
+    <script>document.documentElement.classList.remove('no-js');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050505">
     <title>TFX Creative Lab - Soluções Digitais</title>
 
     <!-- Favicon -->
@@ -70,13 +72,13 @@
             opacity: 1;
         }
 
-        /* Animações de Scroll */
-        .reveal {
+        /* Animações de Scroll (só esconde se houver JS; sem JS o conteúdo aparece) */
+        html:not(.no-js) .reveal {
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .reveal.active {
+        html:not(.no-js) .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
@@ -151,22 +153,22 @@
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
                 <div class="reveal relative overflow-hidden rounded-2xl group md:row-span-2 h-[245px] md:h-[500px]">
-                    <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Portfolio 1">
+                    <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover loading="lazy" group-hover:scale-110 transition-all duration-700" alt="Portfolio 1">
                 </div>
                 <div class="reveal relative overflow-hidden rounded-2xl group h-[245px]">
-                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Portfolio 2">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover loading="lazy" group-hover:scale-110 transition-all duration-700" alt="Portfolio 2">
                 </div>
                 <div class="reveal relative overflow-hidden rounded-2xl group h-[245px]">
-                    <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Portfolio 3">
+                    <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover loading="lazy" group-hover:scale-110 transition-all duration-700" alt="Portfolio 3">
                 </div>
                 <div class="reveal relative overflow-hidden rounded-2xl group md:row-span-2 h-[245px] md:h-[500px]">
-                    <img src="https://images.unsplash.com/photo-1607706189992-eae578626c86?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Portfolio 4">
+                    <img src="https://images.unsplash.com/photo-1607706189992-eae578626c86?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover loading="lazy" group-hover:scale-110 transition-all duration-700" alt="Portfolio 4">
                 </div>
                 <div class="reveal relative overflow-hidden rounded-2xl group h-[245px]">
-                    <img src="https://images.unsplash.com/photo-1517292987719-0369a794ec0f?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Portfolio 5">
+                    <img src="https://images.unsplash.com/photo-1517292987719-0369a794ec0f?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover loading="lazy" group-hover:scale-110 transition-all duration-700" alt="Portfolio 5">
                 </div>
                 <div class="reveal relative overflow-hidden rounded-2xl group h-[245px]">
-                    <img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Portfolio 6">
+                    <img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover loading="lazy" group-hover:scale-110 transition-all duration-700" alt="Portfolio 6">
                 </div>
             </div>
         </section>
@@ -264,7 +266,7 @@
             },
             photo: {
                 title: "Edição de Fotos",
-                subtitle: "Transformando imagens comuns em destques absolutos.",
+                subtitle: "Transformando imagens comuns em destaques absolutos.",
                 img: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=2872&auto=format&fit=crop",
                 desc: "Utilizamos técnicas avançadas de high-end retouching, recuperação de detalhes e manipulação para garantir que cada foto conte uma história e gere conversão.",
                 features: [
@@ -279,7 +281,7 @@
                 title: "Edição de Vídeos",
                 subtitle: "Conteúdo dinâmico que prende a atenção do segundo 1.",
                 img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=2874&auto=format&fit=crop",
-                desc: "Especializados no formato vertical e dinâmico, editamos vídeos com cortes rápidos, legends chamativas e design sonoro para maximizar a retenção em Reels, Shorts e TikTok.",
+                desc: "Especializados no formato vertical e dinâmico, editamos vídeos com cortes rápidos, legendas chamativas e design sonoro para maximizar a retenção em Reels, Shorts e TikTok.",
                 features: [
                     "Edição para Reels, Shorts e TikTok",
                     "Vídeos de Anúncios (VSL)",
@@ -336,7 +338,7 @@
         Object.keys(servicesData).forEach(key => {
             const s = servicesData[key];
             grid.innerHTML += `
-                <div onclick="navigate('detail', '${key}')" class="reveal group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 overflow-hidden cursor-pointer transition-all duration-500 hover:border-tf-purple/50 hover:-translate-y-2">
+                <div role="button" tabindex="0" onclick="navigate('detail', '${key}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();navigate('detail','${key}');}" class="reveal group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 overflow-hidden cursor-pointer transition-all duration-500 hover:border-tf-purple/50 hover:-translate-y-2 focus:outline-none focus:ring-2 focus:ring-tf-purple">
                     <div class="relative z-10 flex flex-col h-full">
                         <div class="flex justify-between items-start mb-8">
                             <i data-lucide="${icons[key]}" class="w-10 h-10 text-tf-purple"></i>
@@ -345,7 +347,7 @@
                         <h3 class="text-2xl font-display font-semibold mb-3">${s.title}</h3>
                         <p class="text-gray-400 mb-6 flex-grow">${s.subtitle}</p>
                         <div class="h-40 w-full rounded-xl overflow-hidden">
-                            <img src="${s.img}" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="${s.title}">
+                            <img src="${s.img}" class="w-full h-full object-cover loading="lazy" group-hover:scale-110 transition-all duration-700" alt="${s.title}">
                         </div>
                     </div>
                 </div>
