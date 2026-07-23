@@ -12,12 +12,15 @@ Site institucional de uma agência de tecnologia e design (landing page SPA de p
 - `index.html` — site completo (markup + estilos + scripts em um arquivo)
 
 ## Deploy
-Site estático. Pode ser hospedado em:
-- **GitHub Pages**: Settings → Pages → Source: `main` / root
-- **Vercel / Netlify**: importar o repositório, build command vazio, publish dir `.`
+Site estático publicado em:
+
+**🔗 https://turiyaterapiaholistica-eng.github.io/tfx-creative-lab**
+
+- **GitHub Pages**: ativo (Source: `main` / root). Republica automático a cada push.
+- **Vercel / Netlify** (opcional): importar o repositório, build command vazio, publish dir `.`
 
 ## Pendências conhecidas (ajustar antes de produção)
-- Substituir o placeholder do WhatsApp (`5500000000000`) pelo número real.
-- O formulário de contato usa `alert()` (não envia dados de verdade) — ligar a um backend/Formspree/Resend.
-- Imagens vêm do Unsplash via hotlink — recomenda-se baixar para `/assets` para estabilidade/offline.
-- Tailwind/Fontes/Lucide vêm de CDN — requer internet para renderizar 100%.
+- ✅ WhatsApp real configurado (`5511978386533`).
+- ⚠️ Formulário de contato usa `alert()` (não envia dados de verdade) — ligar a um backend/Formspree/Resend.
+- ⚠️ Imagens vêm do Unsplash via hotlink — recomenda-se baixar para `/assets` para estabilidade/offline.
+- ⚠️ Tailwind/Fontes/Lucide vêm de CDN — requer internet para renderizar 100%.
