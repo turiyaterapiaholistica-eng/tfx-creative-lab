@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://turiyaterapiaholistica-eng.github.io/tfx-creative-lab/sitemap.xml
