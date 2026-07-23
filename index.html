@@ -68,6 +68,25 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #050505; }
         ::-webkit-scrollbar-thumb { background: #8B5CF6; border-radius: 10px; }
+
+        /* Fallback de fundo animado (leve, quando WebGL está off) */
+        body::before {
+            content: "";
+            position: fixed; inset: 0; z-index: -20; pointer-events: none;
+            background:
+                radial-gradient(40% 50% at 20% 20%, rgba(139,92,246,0.25), transparent 70%),
+                radial-gradient(45% 55% at 80% 30%, rgba(59,130,246,0.20), transparent 70%),
+                radial-gradient(50% 60% at 50% 90%, rgba(139,92,246,0.15), transparent 70%),
+                #050505;
+            animation: tfbg 18s ease-in-out infinite alternate;
+        }
+        @keyframes tfbg {
+            0%   { transform: scale(1) translate(0,0); }
+            100% { transform: scale(1.15) translate(2%, -2%); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            body::before { animation: none; }
+        }
     </style>
 
     <!-- JSON-LD: LocalBusiness (SEO estruturado) -->
