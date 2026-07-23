@@ -98,8 +98,21 @@
             <a href="#portfolio" onclick="navigate('home')" class="hover:text-white transition">Portfólio</a>
             <a href="#planos" onclick="navigate('home')" class="hover:text-white transition">Planos</a>
         </div>
-        <a href="#contato" onclick="navigate('home')" class="bg-white text-black px-4 py-2 rounded-full text-sm font-semibold hover:bg-tf-purple hover:text-white transition-all duration-300">Orçamento</a>
+        <div class="flex items-center gap-2">
+            <a href="#contato" onclick="navigate('home')" class="hidden md:inline-block bg-white text-black px-4 py-2 rounded-full text-sm font-semibold hover:bg-tf-purple hover:text-white transition-all duration-300">Orçamento</a>
+            <button onclick="toggleMobileMenu()" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-white p-2">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
     </nav>
+
+    <!-- Menu mobile -->
+    <div id="mobile-menu" class="fixed top-20 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-3xl bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 flex flex-col gap-4 text-center md:hidden hidden">
+        <a href="#servicos" onclick="navigate('home');toggleMobileMenu()" class="text-lg text-gray-200 hover:text-white transition">Serviços</a>
+        <a href="#portfolio" onclick="navigate('home');toggleMobileMenu()" class="text-lg text-gray-200 hover:text-white transition">Portfólio</a>
+        <a href="#planos" onclick="navigate('home');toggleMobileMenu()" class="text-lg text-gray-200 hover:text-white transition">Planos</a>
+        <a href="#contato" onclick="navigate('home');toggleMobileMenu()" class="bg-white text-black px-4 py-3 rounded-full text-sm font-semibold hover:bg-tf-purple hover:text-white transition-all duration-300">Orçamento</a>
+    </div>
 
     <!-- ========================= VISTA HOME ========================= -->
     <div id="view-home" class="view active">
@@ -492,6 +505,25 @@
                 }
             });
         }
+
+        // Menu mobile (hambúrguer)
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const btn = document.querySelector('[aria-controls="mobile-menu"]');
+            const open = menu.classList.toggle('hidden') === false;
+            if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            lucide.createIcons();
+        }
+        // Fecha o menu mobile ao clicar fora
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('mobile-menu');
+            const btn = document.querySelector('[aria-controls="mobile-menu"]');
+            if (!menu || menu.classList.contains('hidden')) return;
+            if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                menu.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        });
 
         // Init
         lucide.createIcons();
