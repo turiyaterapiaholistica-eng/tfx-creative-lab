@@ -1,0 +1,6 @@
+# Ignorar arquivos de sistema / editores
+.DS_Store
+*.swp
+*~
+.idea/
+.vscode/

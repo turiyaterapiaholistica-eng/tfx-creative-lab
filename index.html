@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFX Creative Lab - Soluções Digitais</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fontes -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=inter@400,500,600&display=swap" rel="stylesheet">
+
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'tf-bg': '#050505',
+                        'tf-purple': '#8B5CF6',
+                        'tf-blue': '#3B82F6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['"Clash Display"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #050505; }
+
+        /* Transições de Páginas */
+        .view {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .view.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Animações de Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #8B5CF6; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-tf-bg text-white font-sans antialiased overflow-x-hidden">
+
+    <!-- Navbar Flutuante -->
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-3xl p-4 flex justify-between items-center bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-6 shadow-2xl">
+        <span onclick="navigate('home')" class="font-display text-xl font-bold tracking-wider cursor-pointer">TFX<span class="text-tf-purple">.</span></span>
+        <div class="hidden md:flex gap-8 text-sm text-gray-300">
+            <a href="#servicos" onclick="navigate('home')" class="hover:text-white transition">Serviços</a>
+            <a href="#portfolio" onclick="navigate('home')" class="hover:text-white transition">Portfólio</a>
+            <a href="#planos" onclick="navigate('home')" class="hover:text-white transition">Planos</a>
+        </div>
+        <a href="#contato" onclick="navigate('home')" class="bg-white text-black px-4 py-2 rounded-full text-sm font-semibold hover:bg-tf-purple hover:text-white transition-all duration-300">Orçamento</a>
+    </nav>
+
+    <!-- ========================= VISTA HOME ========================= -->
+    <div id="view-home" class="view active">
+
+        <!-- Hero Section -->
+        <header class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=2831&auto=format&fit=crop" class="w-full h-full object-cover opacity-40" alt="Tech Background">
+                <div class="absolute inset-0 bg-gradient-to-b from-tf-bg/30 via-tf-bg/80 to-tf-bg"></div>
+            </div>
+
+            <div class="z-10 text-center px-6">
+                <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full mb-6 text-sm backdrop-blur-md">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-tf-purple"></i> Agência de Tecnologia & Design 2026
+                </div>
+                <h1 class="text-5xl md:text-8xl font-display font-bold leading-tight tracking-tighter">
+                    Transformando ideias <br> em <span class="text-transparent bg-clip-text bg-gradient-to-r from-tf-blue to-tf-purple">soluções digitais.</span>
+                </h1>
+                <p class="mt-8 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+                    Do conceito ao lançamento. Nós cuidamos do design, código, vídeos e inteligência artificial.
+                </p>
+                <div class="mt-10 flex flex-col md:flex-row gap-4 justify-center">
+                    <a href="#contato" class="group bg-tf-purple px-8 py-4 rounded-full font-semibold flex items-center justify-center gap-2 hover:bg-tf-blue transition-all duration-300 hover:scale-105">
+                        Solicitar Orçamento <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition"></i>
+                    </a>
+                    <a href="https://wa.me/5500000000000" target="_blank" class="bg-white/5 border border-white/10 backdrop-blur-md px-8 py-4 rounded-full font-semibold flex items-center justify-center gap-2 hover:bg-white/10 transition-all duration-300">
+                        <i data-lucide="message-circle" class="w-5 h-5 text-green-400"></i> Falar no WhatsApp
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Serviços (Grid clicável) -->
+        <section id="servicos" class="py-32 px-6 md:px-20 relative">
+            <div class="reveal max-w-6xl mx-auto mb-20">
+                <h2 class="text-4xl md:text-6xl font-display font-bold tracking-tight">
+                    Nossos <span class="text-tf-purple">Serviços</span>
+                </h2>
+                <p class="text-gray-400 mt-4 text-lg">Clique em cada área para ver os detalhes e tecnologias que utilizamos.</p>
+            </div>
+
+            <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Cards gerados via JS -->
+            </div>
+        </section>
+
+        <!-- Portfólio Resumido -->
+        <section id="portfolio" class="py-32 px-6 md:px-20">
+            <div class="reveal max-w-6xl mx-auto mb-20 text-center">
+                <h2 class="text-4xl md:text-6xl font-display font-bold tracking-tight">Projetos Recentes</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
+                <div class="reveal relative overflow-hidden rounded-2xl group md:row-span-2 h-[245px] md:h-[500px]">
+                    <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Portfolio 1">
+                </div>
+                <div class="reveal relative overflow-hidden rounded-2xl group h-[245px]">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Portfolio 2">
+                </div>
+                <div class="reveal relative overflow-hidden rounded-2xl group h-[245px]">
+                    <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Portfolio 3">
+                </div>
+                <div class="reveal relative overflow-hidden rounded-2xl group md:row-span-2 h-[245px] md:h-[500px]">
+                    <img src="https://images.unsplash.com/photo-1607706189992-eae578626c86?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Portfolio 4">
+                </div>
+                <div class="reveal relative overflow-hidden rounded-2xl group h-[245px]">
+                    <img src="https://images.unsplash.com/photo-1517292987719-0369a794ec0f?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Portfolio 5">
+                </div>
+                <div class="reveal relative overflow-hidden rounded-2xl group h-[245px]">
+                    <img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?q=80&w=880&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Portfolio 6">
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contato" class="py-32 px-6 md:px-20 border-t border-white/5 bg-[#030303]">
+            <!-- Formulário rápido -->
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
+                <div class="reveal">
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Vamos criar algo <span class="text-tf-purple">extraordinário?</span></h2>
+                    <p class="text-gray-400 mb-8">Preencha o formulário ou fale conosco diretamente no WhatsApp.</p>
+                </div>
+                <form class="reveal space-y-4" onsubmit="event.preventDefault(); alert('Mensagem enviada!');">
+                    <input type="text" placeholder="Seu Nome" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-tf-purple transition text-white">
+                    <input type="email" placeholder="Seu Melhor E-mail" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-tf-purple transition text-white">
+                    <textarea placeholder="Conte sobre seu projeto" rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-tf-purple transition text-white"></textarea>
+                    <button type="submit" class="w-full bg-tf-purple py-4 rounded-xl font-semibold hover:bg-tf-blue transition flex items-center justify-center gap-2">Enviar Mensagem <i data-lucide="send"></i></button>
+                </form>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ========================= VISTA DETALHE DO SERVIÇO ========================= -->
+    <div id="view-detail" class="view">
+        <div id="detail-content" class="min-h-screen pt-32 pb-20">
+            <!-- Conteúdo injetado via JS -->
+        </div>
+    </div>
+
+    <script>
+        // Dados dos Serviços
+        const servicesData = {
+            design: {
+                title: "Design Gráfico & Identidade",
+                subtitle: "Criamos marcas que não apenas são vistas, mas lembradas.",
+                img: "https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?q=80&w=2874&auto=format&fit=crop",
+                desc: "Mais do que logos bonitos, construímos ecossistemas visuais. Desde a paleta de cores até o manual da marca, garantimos que sua empresa transmita autoridade e confiança em todos os pontos de contato.",
+                features: [
+                    "Criação de Logotipo e Símbolo",
+                    "Manual de Identidade Visual Completo",
+                    "Paleta de Cores e Tipografia Estratégica",
+                    "Templates para Redes Sociais e Apresentações"
+                ],
+                tech: ["Figma", "Illustrator", "Photoshop", "CorelDRAW"]
+            },
+            photo: {
+                title: "Edição de Fotos",
+                subtitle: "Transformando imagens comuns em destques absolutos.",
+                img: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=2872&auto=format&fit=crop",
+                desc: "Utilizamos técnicas avançadas de high-end retouching, recuperação de detalhes e manipulação para garantir que cada foto conte uma história e gere conversão.",
+                features: [
+                    "Tratamento de Pele e Beauty Retouching",
+                    "Restauração de Fotos Antigas",
+                    "Manipulação e Composição Criativa",
+                    "Tratamento de Cores (Color Grading)"
+                ],
+                tech: ["Photoshop", "Lightroom", "Capture One"]
+            },
+            video: {
+                title: "Edição de Vídeos",
+                subtitle: "Conteúdo dinâmico que prende a atenção do segundo 1.",
+                img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=2874&auto=format&fit=crop",
+                desc: "Especializados no formato vertical e dinâmico, editamos vídeos com cortes rápidos, legends chamativas e design sonoro para maximizar a retenção em Reels, Shorts e TikTok.",
+                features: [
+                    "Edição para Reels, Shorts e TikTok",
+                    "Vídeos de Anúncios (VSL)",
+                    "Motion Graphics e Legendas Animadas",
+                    "Colorização e Sound Design"
+                ],
+                tech: ["Premiere Pro", "After Effects", "DaVinci Resolve", "CapCut Pro"]
+            },
+            dev: {
+                title: "Desenvolvimento Web",
+                subtitle: "Sites e aplicativos rápidos, escaláveis e bonitos.",
+                img: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=2874&auto=format&fit=crop",
+                desc: "Não fazemos sites em massa. Desenvolvemos experiências digitais sob medida utilizando as tecnologias mais modernas do mercado, garantindo velocidade extrema e otimização para SEO.",
+                features: [
+                    "Sites Institucionais e Landing Pages",
+                    "Desenvolvimento de Web Apps",
+                    "E-commerce de Alta Performance",
+                    "Otimização Core Web Vitals e SEO Técnico"
+                ],
+                tech: ["React", "Next.js", "Tailwind CSS", "Node.js", "Vercel"]
+            },
+            ai: {
+                title: "IA e Vibe Coding",
+                subtitle: "Protótipos inteligentes e automações que poupam tempo.",
+                img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2874&auto=format&fit=crop",
+                desc: "Integramos Inteligência Artificial no seu negócio. Seja criando chatbots inteligentes, automatizando processos internos ou desenvolvendo MVPs em tempo recorde usando Vibe Coding.",
+                features: [
+                    "Integração de Chatbots (LLMs)",
+                    "Automação de Tarefas com IA",
+                    "Criação de MVPs em Tempo Recorde",
+                    "Análise de Dados com Inteligência Artificial"
+                ],
+                tech: ["OpenAI API", "Zapier", "Make", "Python", "V0.dev"]
+            },
+            social: {
+                title: "Social Media",
+                subtitle: "Gestão estratégica para dominar o algoritmo.",
+                img: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2874&auto=format&fit=crop",
+                desc: "Cuidamos do ciclo completo das suas redes sociais. Do planejamento estratégico à criação e postagem, mantendo sua marca sempre relevante e engajando seu público-alvo.",
+                features: [
+                    "Planejamento de Conteúdo Estratégico",
+                    "Design de Posts e Carrosséis",
+                    "Gestão e Agendamento de Postagens",
+                    "Relatórios de Crescimento e Engajamento"
+                ],
+                tech: ["Buffer", "Metricool", "Canva Pro", "Figma"]
+            }
+        };
+
+        // Gerar Cards na Home
+        const grid = document.getElementById('services-grid');
+        const icons = { design: 'palette', photo: 'camera', video: 'video', dev: 'code', ai: 'bot', social: 'smartphone' };
+
+        Object.keys(servicesData).forEach(key => {
+            const s = servicesData[key];
+            grid.innerHTML += `
+                <div onclick="navigate('detail', '${key}')" class="reveal group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 overflow-hidden cursor-pointer transition-all duration-500 hover:border-tf-purple/50 hover:-translate-y-2">
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-8">
+                            <i data-lucide="${icons[key]}" class="w-10 h-10 text-tf-purple"></i>
+                            <i data-lucide="arrow-up-right" class="w-6 h-6 text-gray-600 group-hover:text-white transition-all duration-300"></i>
+                        </div>
+                        <h3 class="text-2xl font-display font-semibold mb-3">${s.title}</h3>
+                        <p class="text-gray-400 mb-6 flex-grow">${s.subtitle}</p>
+                        <div class="h-40 w-full rounded-xl overflow-hidden">
+                            <img src="${s.img}" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="${s.title}">
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Sistema de Navegação SPA
+        function navigate(view, serviceId = null) {
+            const home = document.getElementById('view-home');
+            const detail = document.getElementById('view-detail');
+
+            if (view === 'detail') {
+                renderDetail(serviceId);
+                home.classList.remove('active');
+                detail.classList.add('active');
+                window.scrollTo(0, 0);
+            } else {
+                detail.classList.remove('active');
+                home.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+            lucide.createIcons();
+            startRevealObserver();
+        }
+
+        // Renderizar Página de Detalhes
+        function renderDetail(id) {
+            const s = servicesData[id];
+            const content = document.getElementById('detail-content');
+
+            content.innerHTML = `
+                <div class="px-6 md:px-20 max-w-7xl mx-auto">
+                    <!-- Voltar -->
+                    <button onclick="navigate('home')" class="flex items-center gap-2 text-gray-400 hover:text-white transition mb-12 group">
+                        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition"></i> Voltar para Serviços
+                    </button>
+
+                    <!-- Hero do Serviço -->
+                    <div class="grid md:grid-cols-2 gap-12 items-center mb-32">
+                        <div class="reveal active">
+                            <span class="text-tf-purple font-semibold tracking-widest text-sm uppercase">${s.title}</span>
+                            <h1 class="text-4xl md:text-6xl font-display font-bold mt-4 mb-6 tracking-tight">${s.subtitle}</h1>
+                            <p class="text-gray-400 text-lg mb-8">${s.desc}</p>
+                            <a href="#contato" onclick="navigate('home')" class="inline-flex bg-tf-purple px-6 py-3 rounded-full font-semibold items-center gap-2 hover:bg-tf-blue transition">
+                                Quero este serviço <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                        <div class="reveal active relative h-[400px] rounded-3xl overflow-hidden border border-white/10">
+                            <img src="${s.img}" class="w-full h-full object-cover" alt="${s.title}">
+                            <div class="absolute inset-0 bg-gradient-to-t from-tf-bg to-transparent"></div>
+                        </div>
+                    </div>
+
+                    <!-- O que está incluído -->
+                    <div class="mb-32">
+                        <h2 class="text-3xl md:text-4xl font-display font-bold mb-12 reveal active">O que está <span class="text-tf-purple">incluído</span></h2>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            ${s.features.map(f => `
+                                <div class="reveal active flex items-start gap-4 bg-white/5 border border-white/10 p-6 rounded-2xl">
+                                    <div class="bg-tf-purple/20 p-2 rounded-lg mt-1">
+                                        <i data-lucide="check" class="w-5 h-5 text-tf-purple"></i>
+                                    </div>
+                                    <span class="text-lg text-gray-200">${f}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Tecnologias -->
+                    <div class="mb-32 text-center">
+                        <h2 class="text-2xl md:text-3xl font-display font-bold mb-10 reveal active">Tecnologias que utilizamos</h2>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            ${s.tech.map(t => `
+                                <span class="bg-white/5 border border-white/10 px-6 py-3 rounded-full text-gray-300 font-mono text-sm hover:border-tf-purple hover:text-white transition">${t}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- CTA Final -->
+                    <div class="reveal active bg-gradient-to-r from-tf-purple/20 to-tf-blue/10 border border-tf-purple/30 rounded-3xl p-12 text-center">
+                        <h3 class="text-3xl font-display font-bold mb-4">Pronto para começar?</h3>
+                        <p class="text-gray-300 mb-8">Fale com nossa equipe e receba um orçamento personalizado hoje mesmo.</p>
+                        <a href="https://wa.me/5500000000000" target="_blank" class="bg-white text-black px-8 py-4 rounded-full font-semibold inline-flex items-center gap-2 hover:bg-tf-purple hover:text-white transition">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i> Chamar no WhatsApp
+                        </a>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // Animação de Reveal no Scroll
+        function startRevealObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+        }
+
+        // Init
+        lucide.createIcons();
+        startRevealObserver();
+    </script>
+</body>
+</html>
