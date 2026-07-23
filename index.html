@@ -229,9 +229,17 @@
                     <input type="text" name="nome" placeholder="Seu Nome" required class="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-tf-purple transition text-white">
                     <input type="email" name="email" placeholder="Seu Melhor E-mail" required class="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-tf-purple transition text-white">
                     <textarea name="mensagem" placeholder="Conte sobre seu projeto" rows="4" required class="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-tf-purple transition text-white"></textarea>
+                    <label class="flex items-start gap-3 text-sm text-gray-400">
+                        <input type="checkbox" name="consentimento" required class="mt-1 w-4 h-4 accent-tf-purple">
+                        <span>Li e aceito a <a href="privacidade.html" target="_blank" class="text-tf-purple hover:underline">Política de Privacidade</a> e autorizo o tratamento dos meus dados conforme a LGPD.</span>
+                    </label>
                     <button type="submit" class="w-full bg-tf-purple py-4 rounded-xl font-semibold hover:bg-tf-blue transition flex items-center justify-center gap-2">Enviar Mensagem <i data-lucide="send"></i></button>
                     <p id="form-status" class="text-sm text-center hidden"></p>
                 </form>
+            </div>
+            <div class="max-w-6xl mx-auto mt-16 pt-8 border-t border-white/5 text-center text-sm text-gray-500">
+                <p>© 2026 TFX Creative Lab. Todos os direitos reservados.</p>
+                <a href="privacidade.html" class="text-tf-purple hover:underline mt-2 inline-block">Política de Privacidade (LGPD)</a>
             </div>
         </footer>
     </div>
