@@ -228,11 +228,12 @@
                     <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Vamos criar algo <span class="text-tf-purple">extraordinário?</span></h2>
                     <p class="text-gray-400 mb-8">Preencha o formulário ou fale conosco diretamente no WhatsApp.</p>
                 </div>
-                <form class="reveal space-y-4" onsubmit="event.preventDefault(); alert('Mensagem enviada!');">
-                    <input type="text" placeholder="Seu Nome" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-tf-purple transition text-white">
-                    <input type="email" placeholder="Seu Melhor E-mail" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-tf-purple transition text-white">
-                    <textarea placeholder="Conte sobre seu projeto" rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-tf-purple transition text-white"></textarea>
+                <form id="contact-form" class="reveal space-y-4" action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+                    <input type="text" name="nome" placeholder="Seu Nome" required class="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-tf-purple transition text-white">
+                    <input type="email" name="email" placeholder="Seu Melhor E-mail" required class="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-tf-purple transition text-white">
+                    <textarea name="mensagem" placeholder="Conte sobre seu projeto" rows="4" required class="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-tf-purple transition text-white"></textarea>
                     <button type="submit" class="w-full bg-tf-purple py-4 rounded-xl font-semibold hover:bg-tf-blue transition flex items-center justify-center gap-2">Enviar Mensagem <i data-lucide="send"></i></button>
+                    <p id="form-status" class="text-sm text-center hidden"></p>
                 </form>
             </div>
         </footer>
@@ -449,9 +450,51 @@
             document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
         }
 
+        // Formulário de contato (Formspree) — envia via fetch, feedback real
+        function initContactForm() {
+            const form = document.getElementById('contact-form');
+            if (!form) return;
+            const status = document.getElementById('form-status');
+            const btn = form.querySelector('button[type="submit"]');
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const endpoint = form.getAttribute('action');
+                if (!endpoint || endpoint.includes('SEU_ID_AQUI')) {
+                    status.textContent = 'Configure a URL do Formspree no atributo action do form.';
+                    status.className = 'text-sm text-center text-yellow-400';
+                    return;
+                }
+                btn.disabled = true;
+                btn.textContent = 'Enviando...';
+                try {
+                    const res = await fetch(endpoint, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (res.ok) {
+                        status.textContent = 'Mensagem enviada! Entraremos em contato em breve.';
+                        status.className = 'text-sm text-center text-green-400';
+                        form.reset();
+                    } else {
+                        status.textContent = 'Algo deu errado. Tente pelo WhatsApp.';
+                        status.className = 'text-sm text-center text-red-400';
+                    }
+                } catch (err) {
+                    status.textContent = 'Erro de conexão. Tente pelo WhatsApp.';
+                    status.className = 'text-sm text-center text-red-400';
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = 'Enviar Mensagem <i data-lucide="send"></i>';
+                    lucide.createIcons();
+                }
+            });
+        }
+
         // Init
         lucide.createIcons();
         startRevealObserver();
+        initContactForm();
     </script>
 </body>
 </html>

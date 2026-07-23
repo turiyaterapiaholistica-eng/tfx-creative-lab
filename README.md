@@ -21,6 +21,6 @@ Site estático publicado em:
 
 ## Pendências conhecidas (ajustar antes de produção)
 - ✅ WhatsApp real configurado (`5511978386533`).
-- ⚠️ Formulário de contato usa `alert()` (não envia dados de verdade) — ligar a um backend/Formspree/Resend.
+- ⚠️ Formulário de contato: estruturado para Formspree via `fetch`, mas o `action` do `<form id="contact-form">` ainda tem placeholder `https://formspree.io/f/SEU_ID_AQUI`. Trocar pela URL real do seu form no Formspree para enviar leads de verdade.
 - ⚠️ Imagens vêm do Unsplash via hotlink — recomenda-se baixar para `/assets` para estabilidade/offline.
 - ⚠️ Tailwind/Fontes/Lucide vêm de CDN — requer internet para renderizar 100%.
