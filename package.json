@@ -1,0 +1,13 @@
+{
+  "name": "tfx-creative-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institucional TFX Creative Lab (Tailwind build local)",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./tailwind.css -m -c ./tailwind.config.js",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./tailwind.css -c ./tailwind.config.js --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
